@@ -1,6 +1,0 @@
-
-project(cpp_test)
-
-
-
-
