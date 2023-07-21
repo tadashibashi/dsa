@@ -1,0 +1,20 @@
+# OS
+# Mac
+.DS_Store
+
+# IDE
+.idea/
+.vs/
+.vscode/
+
+# Build
+cmake-build*/
+build/
+bin/
+obj/
+
+# Libs
+node_modules/
+
+# Python
+venv/

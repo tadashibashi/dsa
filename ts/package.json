@@ -1,0 +1,16 @@
+{
+  "name": "dsa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "personal data structures and algorithm study",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Aaron Ishibashi",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.3",
+    "jest": "^29.6.1",
+    "ts-jest": "^29.1.1"
+  }
+}
