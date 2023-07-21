@@ -35,6 +35,50 @@ namespace dsa {
     }
 
     template<typename T>
+    LinkedList<T> &LinkedList<T>::insert(int pos, T value)
+    {
+        // beginning of list
+        if (pos == 0)
+        {
+            if (!m_head)
+                m_head = new Node(std::move(value));
+            else
+            {
+                auto newNode = new Node(std::move(value));
+                newNode->next = m_head;
+                m_head = newNode;
+            }
+        }
+        else
+        {   // mid or end of list
+            auto newNode = new Node(std::move(value));
+            auto prevNode = nodeAt(pos - 1);
+            newNode->next = prevNode->next;
+            prevNode->next = newNode;
+        }
+
+        return *this;
+    }
+
+
+    template<typename T>
+    LinkedList<T> &LinkedList<T>::reverse()
+    {
+        Node *prev = nullptr;
+        auto cur = m_head;
+        while (cur) {
+            auto temp = cur->next;
+            cur->next = prev;
+            prev = cur;
+            cur = temp;
+        }
+
+        m_head = prev;
+        return *this;
+    }
+
+
+    template<typename T>
     size_t LinkedList<T>::size() const
     {
         if (!m_head) return 0;
@@ -50,20 +94,55 @@ namespace dsa {
     }
 
     template<typename T>
+    bool LinkedList<T>::empty() const
+    {
+        return !m_head;
+    }
+
+    template<typename T>
     const T &LinkedList<T>::operator[](int idx) const
+    {
+        return nodeAt(idx)->value;;
+    }
+
+    template<typename T>
+    const typename LinkedList<T>::Node *LinkedList<T>::nodeAt(int idx) const
     {
         if (idx < 0 || !m_head)
             throw std::out_of_range("[LinkedList] idx is out of range");
 
         auto cur = m_head;
-        while (idx) {
+        while (idx)
+        {
             if (!cur)
                 throw std::out_of_range("[LinkedList] idx is out of range");
             cur = cur->next;
             --idx;
         }
 
-        return cur->value;
+        return cur;
+    }
+
+    template<typename T>
+    typename LinkedList<T>::Node *LinkedList<T>::nodeAt(int idx)
+    {
+        return const_cast<LinkedList<T>::Node *>(const_cast<const LinkedList<T> *>(this)->nodeAt(idx));
+    }
+
+    template<typename T>
+    const typename LinkedList<T>::Node *LinkedList<T>::lastNode() const
+    {
+        if (!m_head) return nullptr;
+        auto cur = m_head;
+        while (cur->next)
+            cur = cur->next;
+        return cur;
+    }
+
+    template<typename T>
+    typename LinkedList<T>::Node *LinkedList<T>::lastNode()
+    {
+        return const_cast<LinkedList<T>::Node *>(const_cast<const LinkedList<T> *>(this)->lastNode());
     }
 }
 
