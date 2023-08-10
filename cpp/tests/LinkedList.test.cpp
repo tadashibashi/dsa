@@ -1,7 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include <dsa/data/LinkedList.h>
 
-
 TEST_CASE( "LinkedList" ) {
 
     dsa::LinkedList<int> list;
@@ -12,7 +11,7 @@ TEST_CASE( "LinkedList" ) {
     }
 
     SECTION("indexing a zero-length list throws") {
-        REQUIRE_THROWS(list[0]);
+        REQUIRE_THROWS(list.at(0));
     }
 
     SECTION("appending increases list size") {
