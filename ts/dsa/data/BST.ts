@@ -119,14 +119,16 @@ export class BST<T> {
 			if (cur.value === value) return true;
 			
 			if (this.comp(cur.value, value)) {
-                if (cur.left)
-				    cur = cur.left;
+				if (cur.left)
+					cur = cur.left;
+				else
+					return false;
 			} else {
-                if (cur.right)
-                    cur = cur.right;
-            }
-
-            return false;
+				if (cur.right)
+					cur = cur.right;
+				else
+					return false;
+			}
 		}
 	}
 }
