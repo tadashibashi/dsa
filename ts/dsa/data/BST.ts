@@ -17,7 +17,7 @@ class BTNode<T> {
 
 export class BST<T> {
 	head: BTNode<T> | null;
-    comp: (a: T, b: T) => number;
+	comp: (a: T, b: T) => number;
 
 
     /**
@@ -29,7 +29,7 @@ export class BST<T> {
         this.comp = comp;
     }
 
-    
+
     /**
      * Recursive breadth-first generator, yields each node
      * @returns generator
@@ -63,7 +63,7 @@ export class BST<T> {
         for (const node of this.bfsNodes())
             yield node.value;
     }
-	
+
     /**
      * Inserts a value into the tree
      * @param value 
@@ -71,23 +71,23 @@ export class BST<T> {
      */
 	emplace(value: T) {
 
-        // no head? create it with the new value
+		// no head? create it with the new value
 		if (!this.head) {
 			this.head = new BTNode(value);
 			return this;
 		}
 		
-        // search tree for spot to insert
+		// search tree for spot to insert
 		let cur = this.head;
 		while (true) {
-            // duplicate values not allowed
+			// duplicate values not allowed
 			if (this.comp(cur.value, value) === 0) {
 				throw new Error("BST: illegal duplicate value: " + value);
 			}
 			
 			
 			if (this.comp(cur.value, value) < 0) {
-                // value is less than current 
+				// value is less than current
 				if (cur.left) {
 					cur = cur.left;
 				} else { // found empty position to insert
@@ -95,7 +95,7 @@ export class BST<T> {
 					return this;
 				}
 			} else {
-                // value is more than current
+				// value is more than current
 				if (cur.right) {
 					cur = cur.right;
 				} else { // found empty position to insert
