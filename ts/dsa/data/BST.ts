@@ -24,10 +24,10 @@ export class BST<T> {
      * @param comp comparison function, returns negative when `a` comes before `b`
      * 0, when equal, and positive when `b` comes before `a`.
      */
-	constructor(comp: (a: T, b: T) => number = (a, b) => a > b ? -1 : a < b ? 1 : 0 ) {
-		this.head = null;
+    constructor(comp: (a: T, b: T) => number = (a, b) => a > b ? -1 : a < b ? 1 : 0 ) {
+        this.head = null;
         this.comp = comp;
-	}
+    }
 
     
     /**
