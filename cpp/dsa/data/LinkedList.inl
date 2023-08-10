@@ -1,5 +1,7 @@
 #pragma once
 #include "LinkedList.h"
+
+#include <stdexcept>
 #include <utility>
 
 namespace dsa {
@@ -145,6 +147,3 @@ namespace dsa {
         return const_cast<LinkedList<T>::Node *>(const_cast<const LinkedList<T> *>(this)->lastNode());
     }
 }
-
-
-
