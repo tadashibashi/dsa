@@ -11,6 +11,8 @@ class CircularList:
         self.head = None
 
     def __eq__(self, other):
+        """Compare one CircularList to another"""
+        # head of either list is zero edge-case
         if not self.head:
             return not other.head
         elif not other.head:
@@ -32,9 +34,11 @@ class CircularList:
         return p.next is self.head and q.next is other.head
 
     def __ne__(self, other):
+        """Check unequality with another CircularList"""
         return not self.__eq__(other)
 
     def append(self, data):
+        """Append new data to the end of the list"""
         if not self.head:
             self.head = Node(data)
             self.head.next = self.head # circular link
@@ -48,6 +52,7 @@ class CircularList:
         last.next = new_node
 
     def __repr__(self):
+        """Render repl string representation"""
         cur = self.head
         if not cur:
             return "CircularList: []"
