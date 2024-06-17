@@ -11,5 +11,6 @@ endif()
 
 add_executable(dsa_tests hash_map.test.cpp
     test_main.cpp
-    dsa_tests.h)
+    dsa_tests.h
+    vector.test.cpp)
 target_link_libraries(dsa_tests PRIVATE Catch2::Catch2 dsa)

@@ -23,7 +23,9 @@ namespace detail {
     };
 }
 
-/// Flat hash map, using linear probing to resolve collisions
+/// Flat hash map that uses linear probing to resolve collisions.
+/// Features an iterator class for range-based iteration of emplaced elements.
+/// Auto-expands using a threshold factor (current size / number of buckets), where once exceeded it will rehash/expand.
 template<typename K, typename T, typename Equals = detail::DefaultEquals<K>, typename Hasher = detail::DefaultHash<K>>
 class hash_map {
 public:
